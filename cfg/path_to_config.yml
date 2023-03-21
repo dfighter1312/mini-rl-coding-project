@@ -1,0 +1,15 @@
+evaluator:
+  base: cfg/evaluator/
+  MonteCarlo: monte_carlo.yml
+
+environment:
+  base: cfg/environment/
+  GridWorld: grid_world.yml
+
+agents:
+  base: cfg/agents/
+
+policies:
+  base: cfg/policies/
+  Random: random.yml
+  EpsilonGreedy: epsilon_greedy.yml
