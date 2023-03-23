@@ -8,6 +8,9 @@ class BasePolicy:
     
     def get_next_action(self, actions, state=None, values=None):
         raise NotImplementedError
+    
+    def get_probs(self, actions):
+        raise NotImplementedError
 
 
 class RandomPolicy(BasePolicy):
@@ -17,11 +20,16 @@ class RandomPolicy(BasePolicy):
     
     def get_action(self, actions):
         return np.random.choice(actions)
+    
+    def get_probs(self, actions):
+        return np.full(len(actions), 1 / len(actions))
 
 
 class EpsilonGreedyPolicy(BasePolicy):
     
     def __init__(self, epsilon):
+        if epsilon > 1:
+            raise ValueError("Epsilon in e-greedy policy cannot be greater than 1")
         self.epsilon = epsilon
     
     def get_action(self, actions, state=None, values=None):
@@ -31,6 +39,12 @@ class EpsilonGreedyPolicy(BasePolicy):
         else:
             # Exploitation
             return actions[np.argmax(values[state])]
+        
+    def get_probs(self, actions, state=None, values=None):
+        probs = np.full(len(actions), self.epsilon / len(actions))
+        max_value_state = np.argmax[values[state]]
+        probs[max_value_state] += 1 - self.epsilon
+        return probs
         
 policy_mapping = {
     "Random": RandomPolicy,

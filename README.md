@@ -8,4 +8,5 @@
 
 ## Versions logs
 
+- `v0.0.2` (Mar 23): Run policy evaluation with Dynamic Programming (using Iterative Policy Evaluation and Value Iteration) and Temporal Difference.
 - `v0.0.1` (Mar 21): Initialize project, run policy evaluation with Monte Carlo method.

@@ -30,6 +30,9 @@ class BaseEnvironment():
     def get_observation_space(self):
         raise NotImplementedError
     
+    def get_possible_actions(self, state):
+        raise NotImplementedError
+    
 ##############################################
 
 class GymEnvironment(BaseEnvironment):
@@ -168,6 +171,23 @@ class GridWorldEnvironment(discrete.DiscreteEnv):
             
     def get_actions(self):
         return list(range(self.n_actions))
+
+    def get_possible_actions(self, state):
+        """Get possible actions under a state.
+        
+        Returns: A tuple of (probability to state, next state, reward, is terminate)
+        """
+        return list(range(self.n_actions))
+    
+    def simulate_step(self, state, action):
+        """Simulate a step but not actually step on it. Get the necessary information for
+        policy evaluation
+
+        Args:
+            state (int): State label
+            action (int): Action taken
+        """
+        return self.P[state][action]
             
     def get_n_actions(self):
         return self.n_actions

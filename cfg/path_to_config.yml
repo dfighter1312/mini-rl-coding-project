@@ -1,6 +1,9 @@
 evaluator:
   base: cfg/evaluator/
   MonteCarlo: monte_carlo.yml
+  DynamicPolicy: dynamic_policy.yml
+  DynamicValue: dynamic_value.yml
+  TemporalDifference: temporal_diff.yml
 
 environment:
   base: cfg/environment/

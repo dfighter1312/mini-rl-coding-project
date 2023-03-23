@@ -30,6 +30,8 @@ if __name__ == "__main__":
     
     if args.policy_eval:
         
+        print(f"Running policy evaluation on {args.env}, using {args.eval} evaluator and {args.policy} policy")
+        
         # Requiring an environment, an evaluator, and a policy
         env_config = config_reader.read_environment(args.env)
         eval_config = config_reader.read_evaluator(args.eval)
@@ -46,4 +48,4 @@ if __name__ == "__main__":
     
     else:
         
-        print("Other functionality is not available.")
+        print("Other functionalities are not available.")

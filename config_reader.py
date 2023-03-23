@@ -17,7 +17,6 @@ class ConfigurationReader:
         )
 
     def read_environment(self, chosen_env):
-        print(self.path_to_config)
         return self.read_general_configs(
             entity_type="environment",
             chosen_entity=chosen_env,
